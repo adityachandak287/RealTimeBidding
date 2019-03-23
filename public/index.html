@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <title>Krishi Bazaar</title>
+  </head>
+  <body class="bg-dark text-white">
+    <div class="container text-center p-2" id="buttonDiv">
+      <div class="jumbotron p-6 m-4">
+        <h1 class="display-2 text-dark">Krishi Bazaar</h1>
+        <hr />
+        <h2 class="text-dark">Hi, welcome to the Bazaar Bidding Portal!</h2>
+        <div class="container p-4 text-dark" style="width:40%;margin: 0 auto;">
+          <h2 class="lead">Enter your name</h2>
+          <input class="form-control" type="text" id="userName" />
+        </div>
+      </div>
+      <table class="table border-0">
+        <tr>
+          <td>
+            <div class="container">
+              <input
+                type="button"
+                value="Buyer"
+                class="btn btn-lg btn-primary"
+                id="buyerBtn"
+                style="width: 50%"
+              />
+            </div>
+          </td>
+          <td>
+            <div class="container">
+              <input
+                type="button"
+                value="Seller"
+                class="btn btn-lg btn-primary"
+                id="sellerBtn"
+                style="width: 50%"
+              />
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="container p-4 text-center" id="sellerDetails">
+      <form style="width:60%;margin: 0 auto;">
+        <div class="form-group">
+          <label>Crop</label>
+          <input
+            type="text"
+            name="crop"
+            class="form-control"
+            placeholder="Add Crop"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Quantity</label>
+          <input
+            type="text"
+            name="quantity"
+            class="form-control"
+            placeholder="Add Quantity"
+            required
+          />
+        </div>
+
+        <input
+          type="button"
+          id="goToBidding"
+          class="btn btn-danger"
+          value="Go to bidding room!"
+        />
+      </form>
+    </div>
+    <div class="container p-2" id="buyerDiv"></div>
+    <div id="outerSellerDiv">
+      <h2 class="p-2">Current farmers available:</h2>
+      <div class="container p-2" id="sellerDiv"></div>
+    </div>
+
+    <div class="container p-2" id="bidDiv">
+      <div class="container" id="formDiv">
+        <form class="form-inline" id="bidForm" style="text-align: center">
+          <table class="table">
+            <tr>
+              <td>
+                <div class="form-group text-light">
+                  <label><b>Bid Amount</b></label>
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <input
+                    type="amount"
+                    name="name"
+                    id="bidAmount"
+                    class="form-control"
+                    placeholder="Add Amount"
+                  />
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <input
+                    type="button"
+                    class="form-control btn btn-success"
+                    id="submitBid"
+                    value="Submit Bid!"
+                  />
+                </div>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+
+      <div id="highestBidDiv" class="table text-center">
+        <table width="100%">
+          <tr>
+            <td style="width: 70%">
+              <h2 id="highestBid" class="text-center text-light">
+                Highest Bid:
+              </h2>
+            </td>
+            <td id="chooseBuyerTd" style="width: 30%">
+              <input
+                type="button"
+                class="btn btn-success"
+                id="chooseBuyer"
+                value="Sell!"
+                style="width: 90%"
+              />
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="container" id="bidLog"></div>
+    </div>
+    <div class="container" id="chatDiv">
+      <h2>Welcome to Chat!</h2>
+      <div class="container" id="chatLog"></div>
+      <div
+        class="container fixed-bottom bg-light text-white rounded border border-dark"
+      >
+        <div class="container" id="chatMsgDiv">
+          <form class="form-inline" id="chatForm" style="text-align: center">
+            <table class="table">
+              <tr>
+                <td style="width:80%">
+                  <div class="form-group">
+                    <input
+                      type="amount"
+                      name="name"
+                      id="msgText"
+                      class="form-control"
+                      placeholder="Add Message"
+                      style="width:100%"
+                    />
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input
+                      type="button"
+                      class="form-control btn btn-dark"
+                      id="sendMsg"
+                      value="Send"
+                      style="width:100%"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="user.js"></script>
+  </body>
+</html>
