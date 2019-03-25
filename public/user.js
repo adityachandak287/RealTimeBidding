@@ -54,7 +54,7 @@ document.getElementById("chooseBuyer").addEventListener("click", () => {
 
 function connectIO() {
   if (user) {
-    socket = io.connect("http://139.59.90.174:3001");
+    socket = io.connect("https://realtimebidding.herokuapp.com/");
     if (user == "Buyer") {
       socket.on("getSellers", data => {
         console.log(data.sellers);
@@ -113,7 +113,7 @@ function connectIO() {
       console.log(data);
       if (socket.id != data.buyer && socket.id != data.seller) {
         console.log(data);
-        window.location.href = "http://139.59.90.174:3001";
+        window.location.href = "https://realtimebidding.herokuapp.com/";
         socket.emit("killMe", sellerRoom);
       }
     });

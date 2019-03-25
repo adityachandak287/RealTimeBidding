@@ -1,6 +1,6 @@
 var express = require("express");
 var app = express();
-const PORT = 3001;
+const PORT = 3000;
 var server = app.listen(PORT);
 app.use(express.static("public"));
 console.log(`Server is running at ${PORT}`);
